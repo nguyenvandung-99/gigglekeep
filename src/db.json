@@ -1,0 +1,28 @@
+{
+  "notes": [
+    {
+        
+        "title":"Title",
+        "color":"red",
+        "time":"2020/09/30 19:09",
+        "short":"thefirstfewwords",
+        "full":"fullcontent"
+    },
+    {
+        
+        "title":"Title2",
+        "color":"blue",
+        "time":"2020/10/01 19:39",
+        "short":"thefirstfewwords",
+        "full":"fullcontent"
+    },
+    {
+        
+        "title":"Title3",
+        "color":"yellow",
+        "time":"2020/09/31 20:09",
+        "short":"thefirstfewwords",
+        "full":"fullcontent"
+    }
+  ]
+}

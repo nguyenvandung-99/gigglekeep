@@ -1,0 +1,109 @@
+html{
+  font-size:62.5%; /*1 rem is now 10px*/
+  box-sizing:border-box;
+}
+body
+#root {
+  height: 100vh;
+  margin: 0;
+}
+body,input,select,button,textarea{
+  font-size: 1.6rem;
+  font-family: Helvetica, sans-serif;
+}
+.grid-container{
+  display: grid;
+  grid-template-areas: "header"
+  "main"
+  "footer";
+  grid-template-rows: 5rem 1fr 5rem;
+  grid-template-columns: 1fr;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  grid-area: header;
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ed0;
+  
+}
+
+header a {
+  border: #999 0.2rem solid;
+  padding: 0.5rem;
+  color: #555;
+  text-decoration: none;
+  font-size: 2rem;
+}
+
+main {
+  margin: 1rem 0rem;
+}
+
+.notes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.notes li {
+  flex: 0 1 29rem;
+  padding: 0.8rem;
+  border: 0.1rem #ccc solid;
+  margin: 0rem 0.8rem;
+}
+
+.note-single {
+  width: 50rem;
+  padding: 0.5rem;
+}
+
+.note-default {
+  background-color: #bbb;
+}
+
+.note-red {
+  background-color: #f99;
+}
+
+.note-yellow {
+  background-color: #ff9;
+}
+
+.note-blue {
+  background-color: #aaf;
+}
+
+.note-title {
+  font-weight: bold;
+  padding-bottom: 0.8rem;
+}
+
+.note-short{
+  height: 5rem;
+  padding: 0.5rem 0rem;
+}
+
+div {
+  white-space: pre-wrap;
+} 
+
+.note-setting {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0rem;
+  font-size: 1.2rem;
+  color: #333;
+}
