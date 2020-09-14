@@ -15,6 +15,11 @@ class UserNotes extends Component {
 
   componentDidMount() {
     this.props.fetchNotes();
+    this.interval = setInterval(this.props.fetchNotes, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   openModal(event,note) {
@@ -28,7 +33,6 @@ class UserNotes extends Component {
     this.setState({
       note: null,
     });
-    this.props.fetchNotes();
   }
 
   deleteNote() {
