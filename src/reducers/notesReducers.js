@@ -1,4 +1,4 @@
-const { FETCH_NOTES } = require("../types");
+const { FETCH_NOTES, FETCH_BIN } = require("../types");
 
 export const notesReducer = (state = {}, action) => {
   switch (action.type){
@@ -7,7 +7,11 @@ export const notesReducer = (state = {}, action) => {
         notes: action.payload,
         filteredNotes: action.payload,
       };
-      default:
+    case FETCH_BIN:
+      return {
+        bin: action.payload,
+      };
+    default:
       return state;
   }
 }

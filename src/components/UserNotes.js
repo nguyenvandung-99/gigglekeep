@@ -17,7 +17,8 @@ class UserNotes extends Component {
     this.props.fetchNotes();
   }
 
-  openModal(note) {
+  openModal(event,note) {
+    event.preventDefault();
     this.setState({
       note,
     });
@@ -28,6 +29,10 @@ class UserNotes extends Component {
       note: null,
     });
     this.props.fetchNotes();
+  }
+
+  deleteNote() {
+    // change bin to true
   }
 
   render() {
@@ -45,8 +50,8 @@ class UserNotes extends Component {
                 <li key={x._id} className={'note-' + x.color}>
                   <div className='note-single'>
                     <a 
-                    href={"#" + x._id}
-                    onClick={()=>this.openModal(x)}>
+                    href={"/#" + x._id}
+                    onClick={(e)=>this.openModal(e,x)}>
                       <div className='note-title'>
                         {x.title}
                       </div>

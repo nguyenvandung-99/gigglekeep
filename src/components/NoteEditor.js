@@ -22,6 +22,7 @@ class NoteEditor extends Component {
       color: note.color,
       time: note.time,
       full: note.full,
+      bin: note.bin,
     });
   }
 
@@ -77,7 +78,7 @@ class NoteEditor extends Component {
               <button
               className="button primary"
               type="submit">
-                Save (not active)
+                Move to Bin (not active)
               </button>
             </span>
           </div>

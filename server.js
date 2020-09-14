@@ -23,6 +23,7 @@ const Note = mongoose.model("notes",new mongoose.Schema({
   time: String,
   short: String,
   full: String,
+  bin: { type: Boolean, default: false },
 }))
 
 app.get("/api/notes", async(req,res) => {
