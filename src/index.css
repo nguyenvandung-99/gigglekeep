@@ -61,7 +61,7 @@ main {
   flex: 0 1 29rem;
   padding: 0.8rem;
   border: 0.1rem #ccc solid;
-  margin: 0rem 0.8rem;
+  margin: 0rem 0.8rem 1.5rem;
 }
 
 .note-single {
@@ -69,30 +69,35 @@ main {
   padding: 0.5rem;
 }
 
+.notes a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .note-default {
   background-color: #bbb;
 }
 
 .note-red {
-  background-color: #f99;
+  background-color: #faa;
 }
 
 .note-yellow {
-  background-color: #ff9;
+  background-color: #ffa;
 }
 
 .note-blue {
-  background-color: #aaf;
+  background-color: #acf;
 }
 
 .note-title {
   font-weight: bold;
-  padding-bottom: 0.8rem;
+  padding: 0.1rem 0.2rem 0.8rem;
 }
 
-.note-short{
+.note-content{
   height: 5rem;
-  padding: 0.5rem 0rem;
+  padding: 0.5rem 0.2rem;
 }
 
 div {
@@ -106,4 +111,29 @@ div {
   padding: 0.5rem 0rem;
   font-size: 1.2rem;
   color: #333;
+}
+
+.note-edit {
+  padding: 2rem;
+  height: 100%;
+}
+
+.note-edit input {
+  border: none;
+  overflow: auto;
+  outline: none;
+  resize: none;
+  background-color: inherit;
+}
+
+.note-edit textarea {
+  border: inherit;
+  border-top: solid #555 0.2rem;
+  padding-top: 1.4rem;
+  overflow: auto;
+  outline: none;
+  resize: none;
+  background-color: inherit;
+  width: 100%;
+  height: 60vh; /* need to fix this later */
 }
