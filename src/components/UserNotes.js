@@ -31,7 +31,7 @@ class UserNotes extends Component {
   }
 
   render() {
-    const note = this.state.note;
+    const {note} = this.state;
     return (
       <>
         <Fade cascade>

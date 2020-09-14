@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { updateNote } from '../actions/editorActions';
 
-export default class NoteEditor extends Component {
+class NoteEditor extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,6 +39,12 @@ export default class NoteEditor extends Component {
       [e.target.name]: e.target.value,
       time: this.LogTime(),
     });
+    setTimeout(() => this.updateNote(), 2000);
+  }
+
+  updateNote() {
+    const note = this.state;
+    this.props.updateNote(note);
   }
 
   render() {
@@ -79,3 +87,10 @@ export default class NoteEditor extends Component {
     )
   }
 }
+
+export default connect((state) => ({
+  }),
+  {
+    updateNote
+  },
+)(NoteEditor);

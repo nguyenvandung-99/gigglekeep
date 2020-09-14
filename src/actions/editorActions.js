@@ -1,7 +1,7 @@
 import { UPDATE_NOTE } from "../types"
 
 export const updateNote = (note) => (dispatch) => {
-  fetch("/api/notes", {
+  fetch("/api/notes/" + note._id, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
