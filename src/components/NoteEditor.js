@@ -35,9 +35,18 @@ class NoteEditor extends Component {
     ':' + ('0' + current.getMinutes()).slice(-2);
   }
 
-  handleInput = (e) => {
+  handleInput(e) {
     this.setState({
       [e.target.name]: e.target.value,
+      time: this.LogTime(),
+    });
+    setTimeout(() => this.updateNote(), 2000);
+  }
+
+  changeColour(e,color) {
+    e.preventDefault();
+    this.setState({
+      color,
       time: this.LogTime(),
     });
     setTimeout(() => this.updateNote(), 2000);
@@ -60,7 +69,7 @@ class NoteEditor extends Component {
             name="title"
             type="text"
             defaultValue={note.title}
-            onChange={this.handleInput}></input>
+            onChange={(e) => this.handleInput(e)}></input>
           </div>
           <div>
             <textarea
@@ -68,15 +77,23 @@ class NoteEditor extends Component {
             name="full"
             type="textarea"
             defaultValue={note.full}
-            onChange={this.handleInput}></textarea>
+            onChange={(e) => this.handleInput(e)}></textarea>
           </div>
           <div className='note-setting'>
             <span className='note-detail-left'>
               Last modified: {note.time}
             </span>
             <span className='note-detail-right'>
+              <span className='setcolor'>
+              {['default','red','yellow','blue'].map((color) => (
+                <button
+                className={'dot note-' + color}
+                onClick={(e) => this.changeColour(e,color)}>
+                </button>
+              ))}
+              </span>
               <button
-              className="button primary"
+              className="note-delete"
               type="submit">
                 Move to Bin (not active)
               </button>

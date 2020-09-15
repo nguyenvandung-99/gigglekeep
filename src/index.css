@@ -25,6 +25,8 @@ a {
   text-decoration: none;
 }
 
+/* OVERALL */
+
 header {
   grid-area: header;
   color: #000;
@@ -67,6 +69,8 @@ main {
   flex: 7;
 }
 
+/* USERNOTES */
+
 .notes {
   display: flex;
   flex-wrap: wrap;
@@ -80,7 +84,8 @@ main {
 .notes li {
   flex: 0 1 29rem;
   padding: 0.8rem;
-  border: 0.1rem #ccc solid;
+  border: 0.1rem #bbb solid;
+  border-radius: 2rem;
   margin: 0rem 0.8rem 1.5rem;
 }
 
@@ -95,7 +100,7 @@ main {
 }
 
 .note-default {
-  background-color: #bbb;
+  background-color: #ccc;
 }
 
 .note-red {
@@ -103,12 +108,18 @@ main {
 }
 
 .note-yellow {
-  background-color: #ffa;
+  background-color: #ff8;
 }
 
 .note-blue {
   background-color: #acf;
 }
+
+.note-delete {
+  margin: 1rem;
+}
+
+/* NOTEEDITOR */
 
 .note-title {
   font-weight: bold;
@@ -157,4 +168,22 @@ div {
   background-color: inherit;
   width: 100%;
   height: 60vh; /* need to fix this later */
+}
+
+.note-edit .dot {
+  position: relative;
+  top: 0.4rem;
+  margin: 0.2rem;
+  height: 2.3rem;
+  width: 2.3rem;
+  border-radius: 50%;
+  border: solid #aaa 0.2rem;
+  display: inline-block;
+  padding: 0.1rem 0rem;
+}
+
+.note-edit .setcolor {
+  border-right: solid #888 0.2rem;
+  margin-right: 1rem;
+  padding: 1rem 1rem;
 }

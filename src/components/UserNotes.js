@@ -68,7 +68,7 @@ class UserNotes extends Component {
                         Last modified: {x.time}
                       </span>
                       <span className='note-detail-right'>
-                        <button>Delete (not active atm)</button> 
+                        <button className='note-delete'>Move to Bin (not active atm)</button> 
                       </span>
                     </div>
                   </div>

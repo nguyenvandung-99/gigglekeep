@@ -38,6 +38,7 @@ class UserBin extends Component {
                       </span>
                       <span className='note-detail-right'>
                         <button>Delete (not active atm)</button> 
+                        <button>Delete (not active atm)</button> 
                       </span>
                     </div>
                   </div>
