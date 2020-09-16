@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { fetchBin } from '../actions/noteActions';
+import { moveToBin } from '../actions/binActions';
 import React, { Component } from "react";
 import { Fade } from "react-reveal";
 
@@ -7,6 +8,11 @@ class UserBin extends Component {
 
   componentDidMount() {
     this.props.fetchBin();
+    this.interval = setInterval(this.props.fetchBin, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
   
   render() {
@@ -14,7 +20,11 @@ class UserBin extends Component {
       <>
         <Fade cascade>
           {!this.props.bin ? (
-          <div className = "bin-empty">
+          <div className = "empty">
+            Bin is empty
+          </div>
+          ) : this.props.bin.length == 0 ? (
+          <div className = "empty">
             Bin is empty
           </div>
           ) : (
@@ -22,22 +32,23 @@ class UserBin extends Component {
               {this.props.bin.map(x => (
                 <li key={x._id} className={'note-' + x.color}>
                   <div className='note-single'>
-                    <a 
-                    href={"/#" + x._id}
-                    onClick={()=>this.openModal(x)}>
+                   
                       <div className='note-title'>
                         {x.title}
                       </div>
                       <div className='note-content'>
                         {x.short}
                       </div>
-                    </a>
+                    
                     <div className='note-setting'>
                       <span className='note-detail-left'>
                         Deleted: {x.time}
                       </span>
                       <span className='note-detail-right'>
-                        <button>Delete (not active atm)</button> 
+                        <button
+                        onClick={()=>this.props.moveToBin(x)}>
+                        Restore
+                        </button> 
                         <button>Delete (not active atm)</button> 
                       </span>
                     </div>
@@ -56,4 +67,5 @@ export default connect((state) => ({
   bin: state.notes.bin,
 }), {
   fetchBin,
+  moveToBin,
 })(UserBin);

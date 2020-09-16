@@ -13,8 +13,8 @@ function App() {
       <BrowserRouter>
         <div className="grid-container">
           <header>
-            <Link to="/">Giggle Keep</Link>
-            <Link to="/login">Login</Link>
+            <Link className="header-link" to="/">Giggle Keep</Link>
+            <Link className="header-link" to="/login">Dummy account</Link>
           </header>
           <main>
             <Route path="/login" component={LoginScreen} />

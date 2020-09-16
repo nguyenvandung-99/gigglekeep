@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { fetchNotes } from '../actions/noteActions';
+import { moveToBin } from '../actions/binActions';
 import Fade from 'react-reveal'
 import NoteEditor from './NoteEditor';
 import Modal from 'react-modal';
@@ -35,17 +36,13 @@ class UserNotes extends Component {
     });
   }
 
-  deleteNote() {
-    // change bin to true
-  }
-
   render() {
     const {note} = this.state;
     return (
       <>
         <Fade cascade>
           {!this.props.notes ? (
-          <div className = "note-empty">
+          <div className = "empty">
             Start jotting down your ideas!
           </div>
           ) : (
@@ -60,7 +57,7 @@ class UserNotes extends Component {
                         {x.title}
                       </div>
                       <div className='note-content'>
-                        {x.short}
+                        {x.full}
                       </div>
                     </a>
                     <div className='note-setting'>
@@ -68,7 +65,9 @@ class UserNotes extends Component {
                         Last modified: {x.time}
                       </span>
                       <span className='note-detail-right'>
-                        <button className='note-delete'>Move to Bin (not active atm)</button> 
+                        <button 
+                        onClick={()=>this.props.moveToBin(x)}
+                        className='note-delete'>Move to Bin</button> 
                       </span>
                     </div>
                   </div>
@@ -101,4 +100,6 @@ export default connect((state) => ({
   notes: state.notes.filteredNotes,
 }), {
   fetchNotes,
-})(UserNotes);
+  moveToBin,
+},
+)(UserNotes);

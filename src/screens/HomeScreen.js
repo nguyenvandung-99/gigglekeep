@@ -11,9 +11,12 @@ export default class HomeScreen extends Component {
       <BrowserRouter>
         <div className="content">
           <div className="navigation">
-            <Link to="/home">Your Notes</Link>
-            <br />
-            <Link to="/bin">Bin</Link>
+            <div className="navigation-option">
+              <Link to="/home">Your Notes</Link>
+            </div>
+            <div className="navigation-option">
+              <Link to="/bin">Bin</Link> 
+            </div>
           </div>
           <div className="main">
             <Route path="/" exact>

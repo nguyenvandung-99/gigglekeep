@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { updateNote } from '../actions/editorActions';
+import { moveToBin } from '../actions/binActions';
+import { LogTime } from '../LogTime';
 
 class NoteEditor extends Component {
   constructor(props) {
@@ -26,19 +28,10 @@ class NoteEditor extends Component {
     });
   }
 
-  LogTime() {
-    const current = new Date();
-    return current.getFullYear() +
-    '/' + ('0' + (current.getMonth() + 1)).slice(-2) +
-    '/' + ('0' + current.getDate()).slice(-2) +
-    ' ' + ('0' + current.getHours()).slice(-2) + 
-    ':' + ('0' + current.getMinutes()).slice(-2);
-  }
-
   handleInput(e) {
     this.setState({
       [e.target.name]: e.target.value,
-      time: this.LogTime(),
+      time: LogTime(),
     });
     setTimeout(() => this.updateNote(), 2000);
   }
@@ -47,7 +40,7 @@ class NoteEditor extends Component {
     e.preventDefault();
     this.setState({
       color,
-      time: this.LogTime(),
+      time: LogTime(),
     });
     setTimeout(() => this.updateNote(), 2000);
   }
@@ -94,8 +87,8 @@ class NoteEditor extends Component {
               </span>
               <button
               className="note-delete"
-              type="submit">
-                Move to Bin (not active)
+              onClick={()=>this.props.moveToBin(note)}>
+                Move to Bin
               </button>
             </span>
           </div>
@@ -109,6 +102,7 @@ class NoteEditor extends Component {
 export default connect((state) => ({
   }),
   {
-    updateNote
+    updateNote,
+    moveToBin
   },
 )(NoteEditor);
