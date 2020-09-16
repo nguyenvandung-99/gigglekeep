@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { updateNote } from '../actions/editorActions';
 import { moveToBin } from '../actions/binActions';
 import { LogTime } from '../LogTime';
+const shortid = require("shortid");
 
 class NoteEditor extends Component {
   constructor(props) {
@@ -19,12 +20,12 @@ class NoteEditor extends Component {
   componentDidMount() {
     const note = this.props.note;
     this.setState({
-      _id: note._id,
-      title: note.title,
-      color: note.color,
-      time: note.time,
-      full: note.full,
-      bin: note.bin,
+      _id: note._id || shortid.generate(),
+      title: note.title || 'Title...',
+      color: note.color || "default",
+      time: note.time || LogTime(),
+      full: note.full || '',
+      bin: note.bin || false,
     });
   }
 

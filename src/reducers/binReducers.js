@@ -1,6 +1,6 @@
 const { MOVETO_BIN } = require("../types");
 
-const binReducer = (state = {}, action) => {
+export const binReducer = (state = {}, action) => {
   switch (action.type){
     case MOVETO_BIN:
       return {
@@ -10,5 +10,3 @@ const binReducer = (state = {}, action) => {
       return state;
   }
 };
-
-export {binReducer};

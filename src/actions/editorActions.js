@@ -1,6 +1,7 @@
 import { UPDATE_NOTE } from "../types"
 
 export const updateNote = (note) => (dispatch) => {
+  console.log(JSON.stringify(note))
   fetch("/api/notes/" + note._id, {
     method: "PUT",
     headers: {

@@ -1,6 +1,6 @@
-const { UPDATE_NOTE } = require("../types");
+const { UPDATE_NOTE, DELETE_NOTE } = require("../types");
 
-const editorReducer = (state = {}, action) => {
+export const editorReducer = (state = {}, action) => {
   switch (action.type){
     case UPDATE_NOTE:
       return {
@@ -10,5 +10,3 @@ const editorReducer = (state = {}, action) => {
       return state;
   }
 };
-
-export {editorReducer};

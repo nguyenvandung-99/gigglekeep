@@ -110,6 +110,18 @@ main {
   margin: 0rem 0.8rem 1.5rem;
 }
 
+.note-new {
+  margin: 2rem auto;
+  border: 0.1rem #bbb solid;
+  border-radius: 0.8rem;
+  display: block;
+  padding: 1rem;
+  width: 30rem;
+  color: #555;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .note-single {
   width: 50rem;
   padding: 0.5rem;

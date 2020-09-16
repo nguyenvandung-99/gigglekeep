@@ -23,6 +23,13 @@ class UserNotes extends Component {
     clearInterval(this.interval);
   }
 
+  newNote(e) {
+    e.preventDefault();
+    this.setState({
+      note: {},
+    });
+  }
+
   openModal(event,note) {
     event.preventDefault();
     this.setState({
@@ -39,41 +46,48 @@ class UserNotes extends Component {
   render() {
     const {note} = this.state;
     return (
-      <>
+      <div>
         <Fade cascade>
-          {!this.props.notes ? (
-          <div className = "empty">
-            Start jotting down your ideas!
+          <div
+          onClick={(e)=>this.newNote(e)}
+          className="note-new">
+            Add a new note...
           </div>
+          {!this.props.notes ? (
+            <div className = "empty">
+              Start jotting down your ideas!
+            </div>
           ) : (
-            <ul className="notes">
-              {this.props.notes.map(x => (
-                <li key={x._id} className={'note-' + x.color}>
-                  <div className='note-single'>
-                    <a 
-                    href={"/#" + x._id}
-                    onClick={(e)=>this.openModal(e,x)}>
-                      <div className='note-title'>
-                        {x.title}
+            <div>
+              <ul className="notes">
+                {this.props.notes.map(x => (
+                  <li key={x._id} className={'note-' + x.color}>
+                    <div className='note-single'>
+                      <a 
+                      href={"/#" + x._id}
+                      onClick={(e)=>this.openModal(e,x)}>
+                        <div className='note-title'>
+                          {x.title}
+                        </div>
+                        <div className='note-content'>
+                          {x.full}
+                        </div>
+                      </a>
+                      <div className='note-setting'>
+                        <span className='note-detail-left'>
+                          Last modified: {x.time}
+                        </span>
+                        <span className='note-detail-right'>
+                          <button 
+                          onClick={()=>this.props.moveToBin(x)}
+                          className='note-delete'>Move to Bin</button> 
+                        </span>
                       </div>
-                      <div className='note-content'>
-                        {x.full}
-                      </div>
-                    </a>
-                    <div className='note-setting'>
-                      <span className='note-detail-left'>
-                        Last modified: {x.time}
-                      </span>
-                      <span className='note-detail-right'>
-                        <button 
-                        onClick={()=>this.props.moveToBin(x)}
-                        className='note-delete'>Move to Bin</button> 
-                      </span>
                     </div>
-                  </div>
-                </li> 
-              ))}
-            </ul>
+                  </li> 
+                ))}
+              </ul>
+            </div>
           )}
         </Fade>
         {note && (
@@ -91,7 +105,7 @@ class UserNotes extends Component {
             </Modal>
           </div>
         )}
-      </>
+      </div>
     )
   }
 }

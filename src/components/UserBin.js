@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { fetchBin } from '../actions/noteActions';
-import { moveToBin } from '../actions/binActions';
+import { moveToBin, deleteNote } from '../actions/binActions';
 import React, { Component } from "react";
 import { Fade } from "react-reveal";
 
@@ -19,11 +19,7 @@ class UserBin extends Component {
     return(
       <>
         <Fade cascade>
-          {!this.props.bin ? (
-          <div className = "empty">
-            Bin is empty
-          </div>
-          ) : this.props.bin.length == 0 ? (
+          {!this.props.bin || this.props.bin.length == 0 ? (
           <div className = "empty">
             Bin is empty
           </div>
@@ -49,7 +45,8 @@ class UserBin extends Component {
                         onClick={()=>this.props.moveToBin(x)}>
                         Restore
                         </button> 
-                        <button>Delete (not active atm)</button> 
+                        <button
+                        onClick={()=>this.props.deleteNote(x)}>Delete</button> 
                       </span>
                     </div>
                   </div>
@@ -68,4 +65,5 @@ export default connect((state) => ({
 }), {
   fetchBin,
   moveToBin,
+  deleteNote,
 })(UserBin);

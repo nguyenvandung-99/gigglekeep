@@ -6,7 +6,10 @@ const shortid = require("shortid");
 const app = express();
 app.use(bodyParser.json());
 
-mongoose.connect(
+app.use("/", express.static(__dirname + "/build"));
+app.get("/", (req, res) => res.sendFile(__dirname + "/build/index.html"));
+
+mongoose.connect( 
   "mongodb://localhost/notes",
   {
     useNewUrlParser: true,
@@ -21,7 +24,6 @@ const Note = mongoose.model("notes",new mongoose.Schema({
   title: String,
   color: String,
   time: String,
-  short: String,
   full: String,
   bin: { type: Boolean, default: false },
 }))
