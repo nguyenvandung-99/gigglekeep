@@ -18,7 +18,7 @@ function App() {
           </header>
           <main>
             <Route path="/login" component={LoginScreen} />
-            <Route path="/" component={HomeScreen} exact />
+            <Route path="/" component={HomeScreen}/>
           </main>
           <footer></footer>
         </div>
