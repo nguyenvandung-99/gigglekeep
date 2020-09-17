@@ -19,3 +19,4 @@ export const fetchBin = () => async (dispatch) => {
     payload: data,
   });
 }
+

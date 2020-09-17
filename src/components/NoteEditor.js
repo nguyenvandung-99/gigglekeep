@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { updateNote } from '../actions/editorActions';
-import { moveToBin } from '../actions/binActions';
+import { moveToBin } from '../actions/binActions'
 import { LogTime } from '../LogTime';
 const shortid = require("shortid");
 
@@ -14,6 +14,7 @@ class NoteEditor extends Component {
       color: '',
       time: '',
       full: '',
+      new: null,
     }
   }
 
@@ -26,6 +27,7 @@ class NoteEditor extends Component {
       time: note.time || LogTime(),
       full: note.full || '',
       bin: note.bin || false,
+      new: note.new || false,
     });
   }
 
@@ -49,6 +51,15 @@ class NoteEditor extends Component {
   updateNote() {
     const note = this.state;
     this.props.updateNote(note);
+    this.setState({
+      new: false,
+    })
+  }
+
+  moveToBin(e,note) {
+    e.preventDefault();
+    this.props.closeModal();
+    this.props.moveToBin(note);
   }
 
   render() {
@@ -88,7 +99,8 @@ class NoteEditor extends Component {
               </span>
               <button
               className="note-delete"
-              onClick={()=>this.props.moveToBin(note)}>
+              onClick={(e)=>this.moveToBin(e,note)}
+              disabled={this.state.new}>
                 Move to Bin
               </button>
             </span>
@@ -104,6 +116,6 @@ export default connect((state) => ({
   }),
   {
     updateNote,
-    moveToBin
+    moveToBin,
   },
 )(NoteEditor);

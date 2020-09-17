@@ -25,28 +25,28 @@ class UserBin extends Component {
           </div>
           ) : (
             <ul className="notes">
-              {this.props.bin.map(x => (
-                <li key={x._id} className={'note-' + x.color}>
+              {this.props.bin.map(note => (
+                <li key={note._id} className={'note-' + note.color}>
                   <div className='note-single'>
                    
                       <div className='note-title'>
-                        {x.title}
+                        {note.title}
                       </div>
                       <div className='note-content'>
-                        {x.short}
+                        {note.full}
                       </div>
                     
                     <div className='note-setting'>
                       <span className='note-detail-left'>
-                        Deleted: {x.time}
+                        Deleted: {note.time}
                       </span>
                       <span className='note-detail-right'>
                         <button
-                        onClick={()=>this.props.moveToBin(x)}>
+                        onClick={()=>this.props.moveToBin(note)}>
                         Restore
                         </button> 
                         <button
-                        onClick={()=>this.props.deleteNote(x)}>Delete</button> 
+                        onClick={()=>this.props.deleteNote(note)}>Delete</button> 
                       </span>
                     </div>
                   </div>

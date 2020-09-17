@@ -26,7 +26,7 @@ class UserNotes extends Component {
   newNote(e) {
     e.preventDefault();
     this.setState({
-      note: {},
+      note: {new: true},
     });
   }
 
@@ -66,7 +66,7 @@ class UserNotes extends Component {
                       <a 
                       href={"/#" + x._id}
                       onClick={(e)=>this.openModal(e,x)}>
-                        <div className='note-title'>
+                        <div className='note-title note-title-main'>
                           {x.title}
                         </div>
                         <div className='note-content'>
@@ -99,6 +99,7 @@ class UserNotes extends Component {
                 <div>
                 <NoteEditor
                 note = {note}
+                closeModal = {() => this.closeModal()}
                 />
                 </div>
               </Fade>

@@ -122,6 +122,10 @@ main {
   cursor: pointer;
 }
 
+.note-title-main {
+  height: 2rem;
+}
+
 .note-single {
   width: 50rem;
   padding: 0.5rem;
@@ -157,6 +161,7 @@ main {
 .note-title {
   font-weight: bold;
   padding: 0.1rem 0.2rem 0.8rem;
+  
 }
 
 .note-content{
