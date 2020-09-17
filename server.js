@@ -10,7 +10,7 @@ app.use("/", express.static(__dirname + "/build"));
 app.get("/", (req, res) => res.sendFile(__dirname + "/build/index.html"));
 
 mongoose.connect( 
-  "mongodb://localhost/notes",
+  process.env.MONGODB_URL || "mongodb://localhost/notes",
   {
     useNewUrlParser: true,
     useCreateIndex: true,
