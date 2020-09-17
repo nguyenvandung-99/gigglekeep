@@ -12,14 +12,17 @@ export default class HomeScreen extends Component {
         <div className="content">
           <div className="navigation">
             <div className="navigation-option">
-              <Link to="/">Your Notes</Link>
+              <Link to="/home">Your Notes</Link>
             </div>
             <div className="navigation-option">
               <Link to="/bin">Bin</Link> 
             </div>
           </div>
           <div className="main">
-            <Route path="/" component={UserNotes} />
+            <Route path="/" exact>
+              <Redirect to="/home" />
+            </Route>
+            <Route path="/home" component={UserNotes} />
             <Route path="/bin" component={UserBin} />
           </div>
           <footer></footer>
