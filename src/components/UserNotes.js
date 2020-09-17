@@ -89,7 +89,7 @@ class UserNotes extends Component {
               </ul>
             </div>
           )}
-        </Fade>
+        </Fade> 
         {note && (
           <div className={"note-" + note.color}>
             <Modal 
